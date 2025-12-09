@@ -6,7 +6,7 @@ function Home() {
     return (
         <div className='Home1'>
             <h1>Homepage</h1>
-            <p>Test website building is on</p>
+            <p>Test website building is on TCA</p>
             <CardsContainer />
         </div>
     )
