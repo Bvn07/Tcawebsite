@@ -1,0 +1,53 @@
+/* Sidebar main box */
+.Sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; /* hidden initially */
+  width: 250px;
+  height: 100%;
+  background: #111;
+  color: white;
+  padding-top: 70px; /* space for navbar */
+
+  transition: 0.3s ease;
+  z-index: 999;
+}
+
+/* When open */
+.Sidebar.open {
+  left: 0;
+}
+
+/* Sidebar links */
+.Sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.Sidebar ul li {
+  padding: 15px 20px;
+  border-bottom: 1px solid #222;
+}
+
+.Sidebar ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+/* Toggle (Hamburger) button */
+.SidebarToggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+
+  background: #111;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 22px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  z-index: 1001;
+}
