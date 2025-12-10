@@ -2,23 +2,23 @@
 .Sidebar {
   position: fixed;
   top: 0;
-  left: -250px; /* hidden initially */
+  left: -250px; 
   width: 250px;
   height: 100%;
   background: #111;
   color: white;
-  padding-top: 70px; /* space for navbar */
+  padding-top: 70px; 
 
   transition: 0.3s ease;
   z-index: 999;
 }
 
-/* When open */
+
 .Sidebar.open {
   left: 0;
 }
 
-/* Sidebar links */
+
 .Sidebar ul {
   list-style: none;
   padding: 0;
@@ -35,7 +35,7 @@
   font-size: 16px;
 }
 
-/* Toggle (Hamburger) button */
+
 .SidebarToggle {
   position: fixed;
   top: 15px;

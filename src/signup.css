@@ -1,0 +1,38 @@
+.signup-container {
+  width: 350px;
+  margin: 0 auto;                      /* centers horizontally */
+  margin-top: 120px;                   /* centers vertically better */
+  padding: 20px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signup-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.signup-form button {
+  padding: 12px;
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.signup-form button:hover {
+  background: #333;
+}
+
+.switch-text {
+  font-size: 14px;
+  margin-top: 10px;
+}
