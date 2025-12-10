@@ -1,18 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "./supabaseClient";
 import "./home.css";
 
 function Home() {
   const navigate = useNavigate();
+  const [posts, setPosts] = useState([]);
 
-  // PROTECT THE PAGE (same logic)
+  // 🔐 Protect the page
   useEffect(() => {
     async function checkUser() {
       const { data } = await supabase.auth.getUser();
       if (!data.user) navigate("/login");
     }
     checkUser();
+  }, []);
+
+  // 📌 Fetch posts from Supabase
+  useEffect(() => {
+    async function fetchPosts() {
+      const { data, error } = await supabase
+        .from("posts")
+        .select("*")
+        .order("created_at", { ascending: false });
+
+      if (error) {
+        console.error(error);
+        return;
+      }
+
+      setPosts(data);
+    }
+
+    fetchPosts();
   }, []);
 
   return (
@@ -26,79 +46,44 @@ function Home() {
       {/* Feed Container */}
       <div className="feed-container">
 
-        {/* Example Post — IMAGE */}
-        <div className="post-card">
-          <div className="post-author">
-            <img
-              src="https://i.pravatar.cc/150?img=12"
-              alt="user"
-              className="profile-img"
-            />
-            <span className="author-name">Riyaz posted</span>
+        {/* 🔥 DYNAMIC REAL POSTS */}
+        {posts.map((post) => (
+          <div key={post.id} className="post-card">
+
+            {/* Author */}
+            <div className="post-author">
+              <img
+                src="https://i.pravatar.cc/150"
+                alt="user"
+                className="profile-img"
+              />
+              <span className="author-name">
+                {post.user_id?.slice(0, 6)} posted
+              </span>
+            </div>
+
+            {/* Text */}
+            {post.text && <p className="post-text">{post.text}</p>}
+
+            {/* Image or Video */}
+            {post.media_url && (
+              post.media_type === "image" ? (
+                <img src={post.media_url} className="post-media" alt="post" />
+              ) : (
+                <video className="post-media" controls>
+                  <source src={post.media_url} />
+                </video>
+              )
+            )}
+
+            {/* Post Actions */}
+            <div className="post-actions">
+              <span>❤️ 0</span>
+              <span>💬 0</span>
+            </div>
+
           </div>
-
-          <p className="post-text">
-            What a match today! Our team defended the lowest total of the season 🔥🔥
-          </p>
-
-          <img
-            src="https://source.unsplash.com/400x300/?cricket,match"
-            className="post-media"
-            alt="post"
-          />
-
-          <div className="post-actions">
-            <span>❤️ 24</span>
-            <span>💬 6</span>
-          </div>
-        </div>
-
-        {/* Example Post — VIDEO */}
-        <div className="post-card">
-          <div className="post-author">
-            <img
-              src="https://i.pravatar.cc/150?img=9"
-              alt="user"
-              className="profile-img"
-            />
-            <span className="author-name">Akash posted</span>
-          </div>
-
-          <p className="post-text">
-            Last over winning shot by Surya! 🔥 Check the video 👇
-          </p>
-
-          <video className="post-media" controls>
-            <source src="https://www.w3schools.com/html/mov_bbb.mp4" />
-          </video>
-
-          <div className="post-actions">
-            <span>❤️ 43</span>
-            <span>💬 12</span>
-          </div>
-        </div>
-
-        {/* Example Post — TEXT ONLY */}
-        <div className="post-card">
-          <div className="post-author">
-            <img
-              src="https://i.pravatar.cc/150?img=5"
-              alt="user"
-              className="profile-img"
-            />
-            <span className="author-name">Vicky posted</span>
-          </div>
-
-          <p className="post-text">
-            TCA Tournament starts in 10 days! Get your squads ready 🏏🔥
-          </p>
-
-          <div className="post-actions">
-            <span>❤️ 19</span>
-            <span>💬 3</span>
-          </div>
-        </div>
-
+        ))}
       </div>
     </div>
   );
