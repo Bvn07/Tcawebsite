@@ -16,8 +16,9 @@ function Sidebar() {
         <ul>
           <li><a href="/">Dashboard</a></li>
           <li><a href="/players">Players</a></li>
-          <li><a href="/matches">Matches</a></li>
-          <li><a href="/points">Points Table</a></li>
+          <li><a href="/Live Updates">Matches</a></li>
+          <li><a href="/Legends">Points Table</a></li>
+          <li><a href="/community">Community</a></li>
           <li><a href="/about">About</a></li>
         </ul>
       </div>

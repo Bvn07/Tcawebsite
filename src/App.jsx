@@ -14,21 +14,20 @@ import "./sidebar.css";
 function App() {
   return (
     <Router>
-      <Navbar />
-
       <Routes>
 
-        {/* Signup is shown first */}
+        {/* Signup is shown first (NO NAVBAR) */}
         <Route path="/" element={<Signup />} />
 
-        {/* Login page */}
+        {/* Login page (NO NAVBAR) */}
         <Route path="/login" element={<Login />} />
 
-        {/* Home page (after login/signup) */}
+        {/* Home page (NAVBAR + SIDEBAR + FOOTER) */}
         <Route
           path="/home"
           element={
             <>
+              <Navbar />   {/* NAVBAR ONLY HERE */}
               <Sidebar />
               <Home />
               <Footer />
