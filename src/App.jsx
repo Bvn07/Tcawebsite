@@ -7,6 +7,7 @@ import Footer from "./footer";
 import Home from "./home";
 import Signup from "./signup";
 import Login from "./login";
+import Post from "./post";   // <-- ADDED
 
 import "./footer.css";
 import "./sidebar.css";
@@ -30,6 +31,19 @@ function App() {
               <Navbar />   {/* NAVBAR ONLY HERE */}
               <Sidebar />
               <Home />
+              <Footer />
+            </>
+          }
+        />
+
+        {/* POST PAGE (NAVBAR + SIDEBAR + FOOTER) */}
+        <Route
+          path="/post"
+          element={
+            <>
+              <Navbar />
+              <Sidebar />
+              <Post />      {/* <-- ADDED */}
               <Footer />
             </>
           }

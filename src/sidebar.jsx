@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./sidebar.css";
 
 function Sidebar() {
@@ -14,12 +15,13 @@ function Sidebar() {
       {/* Sidebar Box */}
       <div className={`Sidebar ${open ? "open" : ""}`}>
         <ul>
-          <li><a href="/">Dashboard</a></li>
-          <li><a href="/players">Players</a></li>
-          <li><a href="/Live Updates">Matches</a></li>
-          <li><a href="/Legends">Points Table</a></li>
-          <li><a href="/community">Community</a></li>
-          <li><a href="/about">About</a></li>
+          <li><Link to="/home">Dashboard</Link></li>
+          <li><Link to="/post">Post</Link></li>
+          <li><Link to="/players">Players</Link></li>
+          <li><Link to="/matches">Matches</Link></li>
+          <li><Link to="/points">Points Table</Link></li>
+          <li><Link to="/community">Community</Link></li>
+          <li><Link to="/about">About</Link></li>
         </ul>
       </div>
     </div>
